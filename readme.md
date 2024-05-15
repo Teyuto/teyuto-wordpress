@@ -1,7 +1,7 @@
 # WordPress Plugin for Teyuto
 
 ## Description
-This WordPress plugin allows you to easily upload videos to Teyuto, manage metadata associated with the videos, and publish videos on WordPress using shorturls.
+This WordPress plugin allows you to easily upload videos to Teyuto, manage metadata associated with the videos, and publish videos on WordPress using shortcodes. 
 
 ## Installation
 1. Download the plugin file from the release area on GitHub or from the WordPress Plugin Directory.
