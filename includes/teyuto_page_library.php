@@ -99,7 +99,7 @@ function teyutowp_library() { ?>
             <div class="custom-iframe">
             <?php 
               $atts['id'] = $video->id;
-              echo esc_attr(teyutowp_shortcode($atts)); 
+              echo teyutowp_shortcode($atts); 
             ?>
             </div>
           </div>
