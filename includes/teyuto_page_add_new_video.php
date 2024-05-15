@@ -20,8 +20,8 @@ function teyutowp_add_new_video() {
     </label>
   </div>
   <input type="file" id="fileInput" />
-  <input type="text" id="teyuto_apiKey" style="display:none;" value="<?php echo $client->apiKey;?>"/>
-  <input type="text" id="teyuto_channel" style="display:none;" value="<?php echo $client->channel;?>"/>
+  <input type="text" id="teyuto_apiKey" style="display:none;" value="<?php echo esc_attr($client->apiKey); ?>"/>
+  <input type="text" id="teyuto_channel" style="display:none;" value="<?php echo esc_attr($client->channel); ?>"/>
 
   <div id="action-upload">
 	<input type="file" id="video-file">
