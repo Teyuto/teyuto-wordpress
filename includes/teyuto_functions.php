@@ -48,7 +48,6 @@ function teyutowp_delete_video($client, $id=null) {
 
 // patchVideo
 function teyutowp_patch_video($client, $id=null, $patch_data=array()) {
-    echo $id;
     if($id){
         $url = 'https://api.teyuto.tv/v2/videos/' . $id;
 
@@ -106,7 +105,7 @@ function teyutowp_get_client()
 
     if($result->status != '401'){
         $client = array("channel" => $channel, "apiKey" => $apikey, "domain" => $result2->domain);
-        $client = json_encode($client);
+        $client = wp_json_encode($client);
         $client = json_decode($client, false);
     }else{
         $client = false;

@@ -1,7 +1,6 @@
 <?php
 /*
  * Plugin Name: Teyuto
- * Plugin URI: https://teyuto.com/
  * Description: <a target="_blank" href="https://teyuto.com">Teyuto</a> offers video infrastructure tailored for product developers. Leverage <a target="_blank" href="https://teyuto.com">Teyuto</a>'s high-speed video APIs to seamlessly incorporate, expand, and oversee on-demand & low-latency live streaming functionalities within your WordPress platform.
  * Version: 1.0.0
  * Author: teyuto.com
@@ -10,7 +9,7 @@
  * 
  * License: MIT
  * License URI: https://opensource.org/licenses/MIT
- * Text Domain: the text domain of the plugin
+ * Text Domain: teyuto
  * Domain Path: where to find the translation files (see How to Internationalize Your Plugin)
  */
 defined( 'ABSPATH' ) || die( 'No direct script access allowed!' );

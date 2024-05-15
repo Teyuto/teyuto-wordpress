@@ -2,11 +2,13 @@
 function teyutowp_library() { ?>
   
   <?php
-    $url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-    $query_str = parse_url($url, PHP_URL_QUERY);
-    parse_str($query_str, $query_params);
+  $url_components = wp_parse_url("http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
+  $query_params = array();
+  if (isset($url_components['query'])) {
+      parse_str($url_components['query'], $query_params);
+  }
+  $currentPageNum = isset($query_params['paget']) && is_numeric($query_params['paget']) && $query_params['paget'] > 0 ? intval($query_params['paget']) : 1;
 
-    $currentPageNum = isset($query_params['paget']) && is_numeric($query_params['paget']) && $query_params['paget'] > 0  ? intval($query_params['paget']) : 1;
   ?>
  
   <?php 
@@ -24,7 +26,7 @@ function teyutowp_library() { ?>
     <a href="admin.php?page=add-new-video" class="page-title-action aria-button-if-js">Add New</a>
     <hr class="wp-header-end">
 
-    <input id="library-search-value" value="<?php echo $_GET['searcht']; ?>" type="text" placeholder="Search name or id">
+    <input id="library-search-value" value="<?php echo esc_attr($_GET['searcht']); ?>" type="text" placeholder="Search name or id">
 
     <?php
 
@@ -95,10 +97,11 @@ function teyutowp_library() { ?>
           <!-- Video -->
           <div class="video-info-left">
             <div class="custom-iframe">
-              <?php 
+            <?php 
               $atts['id'] = $video->id;
-              echo teyutowp_shortcode($atts); ?>
-            </div> 
+              echo esc_attr(teyutowp_shortcode($atts)); 
+            ?>
+            </div>
           </div>
           <!-- End of Video -->
 
@@ -160,21 +163,21 @@ function teyutowp_library() { ?>
                 <!-- Shortcode -->
                 <div class="custom-video-inputs">
                   <label for="attachment-details-two-column-copy-link" class="name custom-label-item">Shortcode: </label>
-                  <input class="custom-copy-item custom-input-width-75" id="clickable-item-8" type="text" readonly value="[teyuto id=<?php echo($video->id) ?>]">
+                  <input class="custom-copy-item custom-input-width-75" id="clickable-item-8" type="text" readonly value="[teyuto id=<?php echo esc_attr($video->id); ?>]">
                   <div class="clickable-item" title="Copy"></div>
                 </div>
                 <div class="custom-video-inputs">
                   <label for="attachment-details-two-column-copy-link" class="name custom-label-item">16/9: </label>
-                  <input class="custom-copy-item custom-input-width-75" id="clickable-item-8" type="text" readonly value="[teyuto id=<?php echo($video->id) ?> aspect-ratio=16/9]">
+                  <input class="custom-copy-item custom-input-width-75" id="clickable-item-8" type="text" readonly value="[teyuto id=<?php echo esc_attr($video->id) ?> aspect-ratio=16/9]">
                   <label for="attachment-details-two-column-copy-link" class="name custom-label-item">9/16: </label>
-                  <input class="custom-copy-item custom-input-width-75" id="clickable-item-8" type="text" readonly value="[teyuto id=<?php echo($video->id) ?> aspect-ratio=9/16]">
+                  <input class="custom-copy-item custom-input-width-75" id="clickable-item-8" type="text" readonly value="[teyuto id=<?php echo esc_attr($video->id) ?> aspect-ratio=9/16]">
                   <div class="clickable-item" title="Copy"></div>
                 </div>
                
 
                 <!-- Save button for form -->
                 <input type="submit" name="submit-button" id="form-button-trigger" class="button button-primary" value="Save">
-                <input type="text" id="hidden-video-id" name="videoid" value="<?php echo($video->id) ?>">
+                <input type="text" id="hidden-video-id" name="videoid" value="<?php echo esc_attr($video->id) ?>">
               </div>
             </form>
             <!-- End of General form -->
@@ -186,10 +189,10 @@ function teyutowp_library() { ?>
                   <a target="_blank" href="<?php echo(esc_attr($video->assets->mp4)) ?>">Download</a>
                   <span class="links-separator">|</span>
                 <?php endif; ?>
-                <a class="custom-edit-link" target="_blank" href="https://teyuto.tv/dashboard#open_video=<?php echo($video->id) ?>">Edit on Teyuto</a>
+                <a class="custom-edit-link" target="_blank" href="https://teyuto.tv/dashboard#open_video=<?php echo esc_attr($video->id) ?>">Edit on Teyuto</a>
                 <span class="links-separator">|</span>
                 <input type="submit" class="button-link custom-delete-link wp-delete-permanently" name="deleteavideo" value="Delete permanently" />
-                <input type="text" class="form-hidden-text-input" name="deletevideoid" value="<?php echo($video->id) ?>" />
+                <input type="text" class="form-hidden-text-input" name="deletevideoid" value="<?php echo esc_attr($video->id) ?>" />
               </form>
               <a class="button-form-trigger button button-primary">Save</a>
             </div>
@@ -215,7 +218,7 @@ function teyutowp_library() { ?>
       $prevPage = $currentPageNum - 1;
       $nextPage = $currentPageNum + 1;
     ?>
-    Current page: <?php echo $currentPageNum; ?>
+    Current page: <?php echo esc_attr($currentPageNum); ?>
     <?php
     $searcht = isset($_GET['searcht']) ? '&searcht=' . urlencode($_GET['searcht']) : '';
 
@@ -223,8 +226,8 @@ function teyutowp_library() { ?>
     $nextPageLink = "admin.php?page=teyuto-library&paget=$nextPage$searcht";
     ?>
 
-    <a href="<?php echo $prevPageLink; ?>" class="pagination-link">Previous</a>
-    <a href="<?php echo $nextPageLink; ?>" class="pagination-link">Next</a>
+    <a href="<?php echo esc_attr($prevPageLink); ?>" class="pagination-link">Previous</a>
+    <a href="<?php echo esc_attr($nextPageLink); ?>" class="pagination-link">Next</a>
 
   </div>
   <!-- Fine della pagination -->
