@@ -11,7 +11,7 @@ License URI: https://raw.githubusercontent.com/Teyuto/teyuto-wordpress/productio
 Incorporate videos seamlessly into your website using our responsive HTML5 player. Easily upload new videos and manage existing ones directly from your WordPress admin panel.
 
 == Description ==
-[Teyuto](https://teyuti.com) simplifies video management on your WordPress site. It optimizes videos for all screens, securely stores and delivers them globally, and offers a customizable web player. Say goodbye to complexity with Teyuto.
+[Teyuto](https://teyuto.com) simplifies video management on your WordPress site. It optimizes videos for all screens, securely stores and delivers them globally, and offers a customizable web player. Say goodbye to complexity with Teyuto.
 
 == Features ==
 * Upload new videos to Teyuto using the provided form up to 4k.
